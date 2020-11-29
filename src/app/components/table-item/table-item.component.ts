@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-table-item',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableItemComponent implements OnInit {
 
-  constructor() { }
+  public countries: any = [];
+
+  constructor(private _countriesService: CountriesService) { }
 
   ngOnInit(): void {
+    this._countriesService.getCountries()
+        .subscribe(data => {
+          this.countries = data
+          console.log(this.countries)
+        });
   }
 
 }

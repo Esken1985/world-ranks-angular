@@ -49,3 +49,13 @@
 .name {
     padding-left: 15%;
 }
+@media screen and (max-width: 720px) {
+    .area{
+      display: none;
+    }
+  
+    .gini {
+      display: none;
+    }
+  
+  }

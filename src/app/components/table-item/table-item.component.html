@@ -1,9 +1,11 @@
-<div class="table-row">
+<div class="table-row" *ngFor="let country of countries">
     <div class="country">
-        <p>Flag</p>
-        <div class="name">China</div>
+        <img src={{country.flag}} alt="flag"/>
+        <div class="name">{{country.name}}</div>
     </div>
-    <div class="population">1,456,778,000</div>
-    <div class="area">9,388,211</div>
-    <div class="gini">38,2%</div>
+    <div class="population">{{country.population}}</div>
+    <div class="area">
+        {{country.area}}
+    </div>
+    <div class="gini">{{country.gini}}</div>
 </div>
