@@ -4,11 +4,20 @@
     font-family: "Roboto";
   }
 </style>
-
+<div class="table-header">
+  <div class="name-header">Name</div>
+  <div class="population-header">
+    <div>Population</div>
+    <div><mat-icon aria-hidden="false" *ngIf='direction === "asc"; else elseIcon'>keyboard_arrow_up</mat-icon></div>
+    <ng-template #elseIcon><mat-icon>keyboard_arrow_down</mat-icon></ng-template>
+  </div>
+  <div class="area-header">Area (km<sup>2</sup>)</div>
+  <div class="gini-header">Gini</div>
+</div>
 <div
   class="table-row"
   *ngFor="
-    let country of countries
+    let country of orderedCountries
       | paginate
         : {
             id: 'listing',
@@ -20,16 +29,16 @@
 >
   <div class="country">
     <img src="{{ country.flag }}" alt="flag" />
-    <div class="name">{{ country.name }}</div>
+    <div class="name-row">{{ country.name }}</div>
   </div>
-  <div class="population">{{ country.population }}</div>
-  <div class="area">
-    {{ country.area }}
+  <div class="population-row">{{ country.population | number }}</div>
+  <div class="area-row">
+    {{ country.area | number }}
   </div>
-  <div class="gini" *ngIf="country.gini">
+  <div class="gini-row" *ngIf="country.gini">
     <div class="gini-progress"><mat-progress-bar mode="determinate" value={{country.gini}} ></mat-progress-bar></div>
-     {{ country.gini }} %
-    </div>
+     {{ country.gini }}% 
+  </div>
 </div>
 <div class="pagination-container">
   <pagination-controls
