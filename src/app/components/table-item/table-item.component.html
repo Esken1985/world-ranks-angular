@@ -1,11 +1,38 @@
-<div class="table-row" *ngFor="let country of countries">
-    <div class="country">
-        <img src={{country.flag}} alt="flag"/>
-        <div class="name">{{country.name}}</div>
-    </div>
-    <div class="population">{{country.population}}</div>
-    <div class="area">
-        {{country.area}}
-    </div>
-    <div class="gini">{{country.gini}}</div>
+<style>
+  .pagination-controls /deep/ .ngx-pagination {
+    font-size: 24px;
+    font-family: "Roboto";
+  }
+</style>
+
+<div
+  class="table-row"
+  *ngFor="
+    let country of countries
+      | paginate
+        : {
+            id: 'listing',
+            itemsPerPage: 10,
+            currentPage: page,
+            totalItems: totalRecords
+          }
+  "
+>
+  <div class="country">
+    <img src="{{ country.flag }}" alt="flag" />
+    <div class="name">{{ country.name }}</div>
+  </div>
+  <div class="population">{{ country.population }}</div>
+  <div class="area">
+    {{ country.area }}
+  </div>
+  <div class="gini">{{ country.gini }}</div>
+</div>
+<div class="pagination-container">
+  <pagination-controls
+    id="listing"
+    directionalLinks="true"
+    (pageChange)="page = $event"
+    class="pagination-controls"
+  ></pagination-controls>
 </div>
