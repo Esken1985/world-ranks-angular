@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from "@angular/material/progress-bar"
 
 
 const MaterialComponents: any = [
   MatIconModule, 
-  MatPaginatorModule
+  MatProgressBarModule
 ];
 
 

@@ -26,7 +26,10 @@
   <div class="area">
     {{ country.area }}
   </div>
-  <div class="gini">{{ country.gini }}</div>
+  <div class="gini" *ngIf="country.gini">
+    <div class="gini-progress"><mat-progress-bar mode="determinate" value={{country.gini}} ></mat-progress-bar></div>
+     {{ country.gini }} %
+    </div>
 </div>
 <div class="pagination-container">
   <pagination-controls
